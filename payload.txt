@@ -1,0 +1,305 @@
+Procedure to run program and API payload
+
+1)	Go to GitHub, click on clone or download.
+2)	Copy the clone URL for the repository.
+3)	Open Git bash
+4)	Change the current working directory to the location where you want to clone the directory to be made.
+5)	Type git clone and then paste the URL copied URL.
+6)	Press Enter products project will created.
+7)	Open that folder in any tool(visual studio code, WebStrom etc)
+8)	Open terminal.
+9)	Types in the terminal npm install to get all dependencies.
+10)	Types in the terminal node app.js to run project or nodemon in the terminal, if the nodemon is not installed type npm install nodemon –save
+
+•	First created project by using npm init,  it will ask few project related questions such as project name, version, description, author etc.
+•	After that created app.js file in this folder imported express and body-parser module and port to listen the server request etc.
+•	Created routes folder in that creates two files such as products.js and category.js file for writing the routes.
+•	Created service folder in that creates two files such as product_service.js and category_service.js for writing the services.
+•	Created controllers folder in that creates three files such as products.js, category.js for writing logic operation and index.js for creating the entire controllers variable name.
+•	Creted models folder for creating models.
+
+
+Category API’s
+
+ 1) Add category
+
+ Method: post
+ Path: http://localhost:3000/category/addCategory
+
+ Payload: 
+ {
+	"title": "FROZEN",
+	"description": "Frozen category products is ready to cook"
+}
+Response:
+{
+    "success": true,
+    "message": "category has been added successfully"
+}
+	
+2) Get all categories
+
+Method: get
+Path:  http://localhost:3000/category/getAllCategory
+
+
+Response:
+[
+    {
+        "_id": "5d428403d993702d5c3ed221",
+        "title": "RAW",
+        "description": "raw category products directly get from land fertile",
+        "createdOn": "2019-08-01T06:17:39.331Z",
+        "__v": 0
+    },
+    {
+        "_id": "5d4284305e88a83750240cb5",
+        "title": "frozen",
+        "description": "frozen category products is ready to cook",
+        "createdOn": "2019-08-01T06:18:24.042Z",
+        "__v": 0
+    }
+]
+
+
+
+3) Get category by category id
+
+Method: get(params)
+Path: http://localhost:3000/category/getAllCategoryByCategoryId/5d428403d993702d5c3ed221
+
+Response: 
+
+[
+    {
+        "_id": "5d428403d993702d5c3ed221",
+        "title": "RAW",
+        "description": "raw category products directly get from land fertile",
+        "createdOn": "2019-08-01T06:17:39.331Z",
+        "__v": 0
+    }
+]
+
+4) Update category
+
+Method:  put
+Path: http://localhost:3000/category/updateCategoryByCategoryId
+
+
+Payload:
+{
+	"title": "RAW",
+	"description": "raw category products directly get from land fertile",
+	"id": "5d428403d993702d5c3ed221"
+}
+	
+
+Response:
+
+{
+    "success": true,
+    "message": "category has been updated successfully"
+}
+
+5) If delete one category related products should delete.
+
+Method: delete
+Path: http://localhost:3000/category/deleteCategoryByCategoryId
+
+Payload: 
+{
+"category":"5d428403d993702d5c3ed221"
+}
+
+
+Response:
+
+{
+    "deleted products are": [
+        {
+            "isEnabled": true,
+            "category": [
+                "5d428403d993702d5c3ed221"
+            ],
+            "_id": "5d4291f2f7ceee2868b81360",
+            "name": "GREEN PEAS",
+            "description": "GREEN PEAS ",
+            "uom": "KG",
+            "preservationMethods": "keep in refrigerators",
+            "gst": 1,
+            "createdOn": "2019-08-01T07:17:06.248Z",
+            "__v": 0
+        },
+        {
+            "isEnabled": true,
+            "category": [
+                "5d428403d993702d5c3ed221"
+            ],
+            "_id": "5d429263f7ceee2868b81361",
+            "name": "TOMATO",
+            "description": "TOMATO ",
+            "uom": "KG",
+            "preservationMethods": "keep in refrigerators",
+            "gst": 1,
+            "createdOn": "2019-08-01T07:18:59.903Z",
+            "__v": 0
+        },
+        {
+            "isEnabled": true,
+            "category": [
+                "5d428403d993702d5c3ed221"
+            ],
+            "_id": "5d42926df7ceee2868b81362",
+            "name": "POTATO",
+            "description": "POTATO ",
+            "uom": "KG",
+            "preservationMethods": "keep in refrigerators",
+            "gst": 1,
+            "createdOn": "2019-08-01T07:19:09.084Z",
+            "__v": 0
+        }
+    ]
+}
+
+
+
+
+Products API’s
+
+1) Add products
+
+Method: post
+Path: http://localhost:3000/product/addProducts
+
+Payload:
+{
+	"category": "5d428403d993702d5c3ed221",
+	"name": "GREEN PEAS",
+	"description": "GREEN PEAS ",
+	"uom": "KG",
+	"preservationMethods" : "keep in refrigerators",
+	"gst": "1"
+}
+
+Response: 
+
+{
+    "success": true,
+    "message": "products has been added successfully"
+}
+
+2) Get all products
+
+Method: get
+Path: http://localhost:3000/product/getAllProducts
+
+
+
+Response: 
+[
+    {
+        "isEnabled": true,
+        "category": [
+            "5d428403d993702d5c3ed221"
+        ],
+        "_id": "5d4291f2f7ceee2868b81360",
+        "name": "GREEN PEAS",
+        "description": "GREEN PEAS ",
+        "uom": "KG",
+        "preservationMethods": "keep in refrigerators",
+        "gst": 1,
+        "createdOn": "2019-08-01T07:17:06.248Z",
+        "__v": 0
+    },
+    {
+        "isEnabled": true,
+        "category": [
+            "5d428403d993702d5c3ed221"
+        ],
+        "_id": "5d429263f7ceee2868b81361",
+        "name": "TOMATO",
+        "description": "TOMATO ",
+        "uom": "KG",
+        "preservationMethods": "keep in refrigerators",
+        "gst": 1,
+        "createdOn": "2019-08-01T07:18:59.903Z",
+        "__v": 0
+    },
+    {
+        "isEnabled": true,
+        "category": [
+            "5d428403d993702d5c3ed221"
+        ],
+        "_id": "5d42926df7ceee2868b81362",
+        "name": "POTATO",
+        "description": "POTATO ",
+        "uom": "KG",
+        "preservationMethods": "keep in refrigerators",
+        "gst": 1,
+        "createdOn": "2019-08-01T07:19:09.084Z",
+        "__v": 0
+    },
+    {
+        "isEnabled": true,
+        "category": [
+            "5d4284305e88a83750240cb5"
+        ],
+        "_id": "5d42928cf7ceee2868b81363",
+        "name": "SWEET CORN CANDY",
+        "description": "SWEET CORN CANDY ",
+        "uom": "KG",
+        "preservationMethods": "keep in refrigerators",
+        "gst": 1,
+        "createdOn": "2019-08-01T07:19:40.698Z",
+        "__v": 0
+    }
+]
+
+3) Get all products by product id
+
+Method: get (params)
+Path: http://localhost:3000/product/getProductsByProductId/5d4291f2f7ceee2868b81360
+
+
+Response:
+{
+        "isEnabled": true,
+        "category": [
+            "5d428403d993702d5c3ed221"
+        ],
+        "_id": "5d4291f2f7ceee2868b81360",
+        "name": "GREEN PEAS",
+        "description": "GREEN PEAS ",
+        "uom": "KG",
+        "preservationMethods": "keep in refrigerators",
+        "gst": 1,
+        "createdOn": "2019-08-01T07:17:06.248Z",
+        "__v": 0
+    }
+
+4) Update products 
+
+Method: put
+Path: http://localhost:3000/product/updateProductsByProductId
+
+Payload:
+{
+	"categoryId": "5d428403d993702d5c3ed221" ,
+	"name": "Green Peas",
+	"description": "Green Peas ",
+	"uom": "KG",
+	"preservationMethods" : "keep in refrigerators",
+	"gst": "1",
+	"isEnabled": false,
+	"id": "5d4291f2f7ceee2868b81360"
+}
+	
+
+Response:
+{
+    "success": true,
+    "message": "products has been updated successfully"
+}
+
+
+
